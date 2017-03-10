@@ -14,8 +14,11 @@ from tgext.admin.controller import AdminController
 
 from sewwebappturbogear.lib.base import BaseController
 from sewwebappturbogear.controllers.error import ErrorController
-
+from sewwebappturbogear.forms.book_forms import add_book_form
 from sewwebappturbogear.model.book import Book
+from sewwebappturbogear.forms.book_forms import book_table_value
+from sewwebappturbogear.forms.book_forms import book_table
+
 
 __all__ = ['RootController']
 
@@ -127,3 +130,19 @@ class RootController(BaseController):
         for book in books:
             print(book.title)
         return dict(books=books)
+
+    @expose('sewwebappturbogear.templates.addbook')
+    def add(self, **kw):
+        tmpl_context.widget = add_book_form
+        return dict(value=kw)
+
+    @expose('sewwebappturbogear.templates.booktable')
+    def booktable(self, **kw):
+        table = book_table
+        data = book_table_value
+        return dict(table=table, data=data)
+
+    @expose('sewwebappturbogear.templates.oldtable')
+    def get_all(self):
+        tmpl_context.widget = book_table
+        return dict()

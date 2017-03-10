@@ -1,5 +1,4 @@
 MANIFEST.in
-README.txt
 setup.cfg
 setup.py
 sew_webapp_turbogear.egg-info/PKG-INFO
@@ -39,6 +38,7 @@ sewwebappturbogear/public/img/under_the_hood_blue.png
 sewwebappturbogear/public/javascript/bootstrap.min.js
 sewwebappturbogear/templates/__init__.py
 sewwebappturbogear/templates/about.xhtml
+sewwebappturbogear/templates/book.xhtml
 sewwebappturbogear/templates/data.xhtml
 sewwebappturbogear/templates/environ.xhtml
 sewwebappturbogear/templates/error.xhtml
@@ -46,7 +46,6 @@ sewwebappturbogear/templates/index.xhtml
 sewwebappturbogear/templates/login.xhtml
 sewwebappturbogear/templates/master.xhtml
 sewwebappturbogear/templates/template.xhtml.template
-sewwebappturbogear/templates/__pycache__/__init__.cpython-35.pyc
 sewwebappturbogear/tests/__init__.py
 sewwebappturbogear/tests/functional/__init__.py
 sewwebappturbogear/tests/functional/test_authentication.py
