@@ -13,14 +13,20 @@ from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 
 from sewwebappturbogear.lib.base import BaseController
+from tg import RestController
+from tgext.crud import EasyCrudRestController
 from sewwebappturbogear.controllers.error import ErrorController
 from sewwebappturbogear.forms.book_forms import add_book_form
 from sewwebappturbogear.model.book import Book
-from sewwebappturbogear.forms.book_forms import book_table_value
 from sewwebappturbogear.forms.book_forms import book_table
+from sewwebappturbogear.forms.book_forms import book_table_filler
 
 
 __all__ = ['RootController']
+
+
+class BookController(EasyCrudRestController):
+    model = Book
 
 
 class RootController(BaseController):
@@ -41,6 +47,9 @@ class RootController(BaseController):
     admin = AdminController(model, DBSession, config_type=TGAdminConfig)
 
     error = ErrorController()
+
+    books = BookController(DBSession)
+
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = "sewwebappturbogear"
@@ -138,9 +147,7 @@ class RootController(BaseController):
 
     @expose('sewwebappturbogear.templates.booktable')
     def booktable(self, **kw):
-        table = book_table
-        data = book_table_value
-        return dict(table=table, data=data)
+        return dict(table=book_table(value=book_table_filler.get_value()))
 
     @expose('sewwebappturbogear.templates.oldtable')
     def get_all(self):

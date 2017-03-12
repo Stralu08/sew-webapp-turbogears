@@ -15,13 +15,13 @@ add_book_form = AddBookForm(DBSession)
 
 class BookTable(TableBase):
     __model__ = Book
-    __limit_fields__ = ['isbn10', 'isbn13']
+    #__limit_fields__ = ['isbn10', 'isbn13']
 
 book_table = BookTable(DBSession)
 
 
 class BookTableFiller(TableFiller):
     __model__ = Book
-    __limit_fields__ = ['isbn10', 'isbn13', 'author', 'title']
+    #__limit_fields__ = ['isbn10', 'isbn13', 'author', 'title']
 
-book_table_value = BookTableFiller(DBSession).get_value()
+book_table_filler = BookTableFiller(DBSession)
